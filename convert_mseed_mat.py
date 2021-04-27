@@ -25,15 +25,28 @@ def main(args):
     outdict = {}
 
 
-    st.plot(outfile=f"{filename}.png")
-    for ii,tr in enumerate(st):
-        outdict[f'stats_{ii}'] = {}
-        for val in tr.stats:
-            if val in ['starttime', 'endtime']:
-                outdict[f'stats_{ii}'][val] = str(tr.stats[val])
-            else:
-                outdict[f'stats_{ii}'][val] = tr.stats[val]
-        outdict[f"data_{ii}"] = tr.data
+    # st.plot(outfile=f"{filename}.png")
+    if len(st)>1:
+        outdict['stats'] = {}
+        outdict['data'] = {}
+        
+        for ii,tr in enumerate(st):
+            outdict['stats'][f'stats_{ii}'] = {}
+            for val in tr.stats:
+                if val in ['starttime', 'endtime']:
+                    outdict['stats'][f'stats_{ii}'][val] = str(tr.stats[val])
+                else:
+                    outdict['stats'][f'stats_{ii}'][val] = tr.stats[val]
+            outdict['data'][f"data_{ii}"] = tr.data
+    else:
+        for ii,tr in enumerate(st):
+            outdict[f'stats_{ii}'] = {}
+            for val in tr.stats:
+                if val in ['starttime', 'endtime']:
+                    outdict[f'stats_{ii}'][val] = str(tr.stats[val])
+                else:
+                    outdict[f'stats_{ii}'][val] = tr.stats[val]
+            outdict[f"data_{ii}"] = tr.data
         
     # print(outdict)
     sio.savemat(
