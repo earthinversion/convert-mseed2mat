@@ -1,14 +1,8 @@
 clear; close all; clc;
 
-wdir='mseed2mat\';
-net='IN';
-stcode = 'RAGD';
-year=2020;
-month = 5;
-monstr = month2str(month);
-doy = 1;
-doystr = doy2str(doy);
-fileloc0=[wdir,'example_',num2str(year),'-',monstr,'-', doystr,'_',net, '.',stcode,'..','BHZ'];
+wdir='.\';
+
+fileloc0=[wdir,'example_2020-05-01_IN.RAGD..BHZ'];
 fileloc_ext = '.mat';
 fileloc = [fileloc0 fileloc_ext];
 if exist(fileloc,'file')
@@ -28,10 +22,10 @@ if exist(fileloc,'file')
     plot(t1:seconds(delta):t2, data_0, 'k-')
     title([getfield(stats_0,'network'),'-', getfield(stats_0,'station'), '-', getfield(stats_0,'channel')])
     axis tight;
-    print(fig,[fileloc0, '_ts.jpg'],'-djpeg')
+    print(fig,['docs/',fileloc0, '_ts.jpg'],'-djpeg')
     
     fig2 = figure();
     data_0_double = double(data_0);
     spectrogram(data_0_double,kaiser(128,18),120,128,sampling_rate,'yaxis')
-    print(fig2,[fileloc0, '_spectrogram.jpg'],'-djpeg')
+    print(fig2,['docs/',fileloc0, '_spectrogram.jpg'],'-djpeg')
 end
