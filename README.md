@@ -39,8 +39,11 @@ optional arguments:
 python convert_mseed_mat.py -inp example_2020-05-01_IN.RAGD..BHZ.mseed
 ```
 
+#### Utility Program Plot using Obspy
 ![Utility Program Plot using Obspy](docs/example_2020-05-01_IN.RAGD..BHZ.png)
 
+#### MATLAB time series plot
 ![MATLAB time series plot](docs/example_2020-05-01_IN.RAGD..BHZ_ts.jpg)
 
+#### MATLAB spectrogram plot
 ![MATLAB spectrogram plot](docs/example_2020-05-01_IN.RAGD..BHZ_spectrogram.jpg)
