@@ -34,6 +34,16 @@ optional arguments:
                         output mat file name, e.g. example_2020-05-01_IN.RAGD..BHZ.mat
 ```
 
+### Output data structure
+- `stats` contains all the meta data information corresponding to each trace and 
+- `data` contain the time series data
+
+```
+mat_file.mat -> stats, data
+stats -> stats_0, stats_1, ...
+data -> data_0, data_1, ...
+```
+
 ### Example
 ```
 python convert_mseed_mat.py -inp example_2020-05-01_IN.RAGD..BHZ.mseed
